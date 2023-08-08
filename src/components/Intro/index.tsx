@@ -13,12 +13,21 @@ export function Intro(){
                     </div>
                     <div className="itens">
                         <div>
-                            <DescriptionItem />
-                            <DescriptionItem />
+                            <DescriptionItem item='shoppingCart'>
+                                Compra simples e segura
+                            </DescriptionItem>
+                            <DescriptionItem item='Timer'>
+                                Compra simples e segura
+                            </DescriptionItem>
                         </div>
                         <div>
-                            <DescriptionItem />
-                            <DescriptionItem />
+                            <DescriptionItem item='Package'>
+                                Compra simples e segura
+                            </DescriptionItem>
+                            
+                            <DescriptionItem item='Coffee'>
+                                Compra simples e segura
+                            </DescriptionItem>
                         </div>
                     </div>
                 </div>
