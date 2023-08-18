@@ -13,7 +13,7 @@ export const GlobalStyles = createGlobalStyle<{theme:ThemeType}>`
     }
 
     body{
-        background: ${(props)=>props.theme['gray-100']};
+        background: ${(props)=>props.theme.background};
         height: 100vh;
         width: 80vw;
         margin: 0 auto;

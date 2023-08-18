@@ -7,7 +7,7 @@ export const HomeContainer = styled.div`
     display: flex;
     gap: 56px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
     img{
         width: 476px;
