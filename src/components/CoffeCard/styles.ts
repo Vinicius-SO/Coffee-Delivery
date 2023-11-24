@@ -95,7 +95,14 @@ export const BuyContainer = styled.div`
         } 
 
     }
+    button{
+        background: transparent ;
 
+        &:hover{
+            cursor: pointer;
+            filter: brightness(1.5);
+        }
+    }
     .cart{
         display: flex;
         padding: 0.5rem;

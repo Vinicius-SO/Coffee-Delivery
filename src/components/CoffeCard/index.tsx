@@ -1,6 +1,8 @@
 import { BuyContainer, CoffeeCardContainer } from "./styles";
 import Coffee from '../../assets/Coffee.svg'
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { ShoppingCartContext } from '../../context/ShoppingCartContext'
+import { useContext } from "react";
 
 
 interface CoffeeItem{
@@ -9,35 +11,35 @@ interface CoffeeItem{
     type: string[]
     price: number
     img:string
-
+    // cart: number
 }
 
 interface CoffeeCardProps{
-    coffee: CoffeeItem
+    coffe: CoffeeItem
 }
 
 
 
-export function CoffeeCard ({coffee}:CoffeeCardProps){
-
-    const formatedPrice = coffee.price.toLocaleString('pt-BR', {
+export function CoffeeCard ({coffe}:CoffeeCardProps){
+    // const {changeCartValue} = useContext(CoffeTypeContext)
+    const formatedPrice = coffe.price.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
       });
 
     return(
         <CoffeeCardContainer>
-            <img src={coffee.img} alt=""/>
+            <img src={coffe.img} alt=""/>
             {/* <br /> */}
             <div style={{display: 'flex', gap: '4px'}}>
-                {coffee.type.map((types:string)=>{
+                {coffe.type.map((types:string)=>{
                     return(
                         <span className="type">{types}</span>
                     )
                 })}
             </div>
-            <h3>{coffee.title}</h3>
-            <span className="description">{coffee.description}</span>
+            <h3>{coffe.title}</h3>
+            <span className="description">{coffe.description}</span>
             
             <BuyContainer>
                 <span>
@@ -45,7 +47,15 @@ export function CoffeeCard ({coffee}:CoffeeCardProps){
                     <span>{formatedPrice}</span>
                 </span>
 
-                <div className="buy"><Minus weight="bold" size={14}/> 1 <Plus weight="bold" size={14}/> </div>
+                <div className="buy">
+                    <button >
+                         <Minus weight="bold" size={14}/> 
+                    </button>
+                       {0}
+                    <button>
+                        <Plus weight="bold" size={14}/>
+                    </button>
+                 </div>
                 
                 <div className="cart"><ShoppingCart weight="fill"/></div>
             </BuyContainer>
