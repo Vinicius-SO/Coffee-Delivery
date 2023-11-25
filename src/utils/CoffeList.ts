@@ -13,6 +13,7 @@ import mochaccino from '../assets/coffee/Type=Mochaccino.svg'
 import latte from '../assets/coffee/Type=Latte.svg'
 import árabe from '../assets/coffee/Type=Árabe.svg'
 
+// import {v4 as uuid } from 'uuid'
 interface Coffe{
     id:number
     title: string

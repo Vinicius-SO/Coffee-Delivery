@@ -10,7 +10,9 @@ import { Link } from 'react-router-dom';
 export function Header (){
     return(
         <HeaderContainer>
-            <img src={coffeeLogo} alt="" />
+            <Link to='/'>
+                <img src={coffeeLogo} alt="" />
+            </Link>
             <div>
                 <button className="locale"><MapPin size={22} weight='fill'/> São Paulo, SP</button>
                 <Link to='/cart' className="shopCart"><ShoppingCart size={22} weight='fill'/></Link>

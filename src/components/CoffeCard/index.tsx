@@ -2,10 +2,12 @@ import { BuyContainer, CoffeeCardContainer } from "./styles";
 import Coffee from '../../assets/Coffee.svg'
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { ShoppingCartContext } from '../../context/ShoppingCartContext'
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 interface CoffeeItem{
+    id:number
     title: string
     description: string
     type: string[]
@@ -18,15 +20,31 @@ interface CoffeeCardProps{
     coffe: CoffeeItem
 }
 
-
-
 export function CoffeeCard ({coffe}:CoffeeCardProps){
-    // const {changeCartValue} = useContext(CoffeTypeContext)
+    const {cart, addProductToShopCart} = useContext(ShoppingCartContext)
+
+
+    const [count, setCount ] = useState(() => {
+        const cartItem = cart.find(cartItem=>{
+            return cartItem.id === coffe.id
+        })
+        if(cartItem){
+            return cartItem.value
+        }else{
+            return 0
+        }
+    })
+    
+    console.log(cart)
+   
     const formatedPrice = coffe.price.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
-      });
+    });
 
+    // console.log(cart)
+    
+    
     return(
         <CoffeeCardContainer>
             <img src={coffe.img} alt=""/>
@@ -48,16 +66,29 @@ export function CoffeeCard ({coffe}:CoffeeCardProps){
                 </span>
 
                 <div className="buy">
-                    <button >
+                    <button onClick={()=>{
+                        setCount(state=>{
+                            if(state > 0){
+                                return state - 1
+                            }
+                            return state
+                        })
+                    }}>
                          <Minus weight="bold" size={14}/> 
                     </button>
-                       {0}
-                    <button>
+                       {count}
+                    <button onClick={()=>{
+                        setCount(state=>{
+                            return state + 1
+                        })
+                        addProductToShopCart(coffe.id)
+                    }}>
                         <Plus weight="bold" size={14}/>
                     </button>
                  </div>
                 
-                <div className="cart"><ShoppingCart weight="fill"/></div>
+                 <Link to='/cart' className="cart"><ShoppingCart weight="fill"/></Link>
+                {/* <div className="cart"><ShoppingCart weight="fill"/></div> */}
             </BuyContainer>
 
         </CoffeeCardContainer>
