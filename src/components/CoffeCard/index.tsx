@@ -22,7 +22,7 @@ interface CoffeeCardProps{
 }
 
 export function CoffeeCard ({coffe}:CoffeeCardProps){
-    const {cart, addProductToShopCart} = useContext(ShoppingCartContext)
+    const {cart, addProductToShopCart, deleteProductAtCart} = useContext(ShoppingCartContext)
 
     
 
@@ -90,6 +90,7 @@ export function CoffeeCard ({coffe}:CoffeeCardProps){
                             }
                             return state
                         })
+                        deleteProductAtCart(coffe.id)
                     }}>
                          <Minus weight="bold" size={14}/> 
                     </button>

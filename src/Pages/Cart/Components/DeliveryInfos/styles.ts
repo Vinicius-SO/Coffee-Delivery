@@ -13,6 +13,7 @@ export const DeliveryInfosContainer = styled.section`
     align-items: flex-start;
     gap: 2rem;
     align-self: stretch;
+    margin-bottom: 0.75rem;
 
     border-radius: 0.375rem;
     background: ${props => props.theme['gray-100']};
@@ -28,7 +29,7 @@ export const DeliveryInfosContainer = styled.section`
     }
 
     .title{
-        color: ${props=>props.theme['']};
+        color: ${props=>props.theme['gray-800']};
         /* Text/Regular M */
         font-family: Roboto;
         font-size: 1rem;
@@ -57,7 +58,15 @@ export const Input = styled.input<InputProps>`
     padding: 0.75rem;
     align-items: center;
     gap: 0.25rem;display: flex;
-    width: ${props=> props.Width}rem;
+    width: ${props=> {
+
+        if(props.width){
+            return 'props.width rem' 
+        }else{
+            return '100%'
+        }}
+    };
+    width: ${props=> props.width}rem;
     padding: 0.75rem;
     align-items: center;
     gap: 0.25rem;
@@ -66,10 +75,17 @@ export const Input = styled.input<InputProps>`
     border: 1px solid ${props => props.theme['gray-400']};
     background: ${props => props.theme['gray-300']};
 
+    &:placeholder{
+      color: ${props=>props.theme['gray-600']} ;
+    }
     div{
         display: flex;
     }
 
 `
 
-export const FormContainer = styled.div``
+
+
+export const FormContainer = styled.div`
+    width: 100%;
+`

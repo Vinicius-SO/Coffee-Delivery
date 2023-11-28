@@ -62,7 +62,18 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
 
   function deleteProductAtCart(productID: number) {
-   
+    const cartList = cart
+
+    const cartIndex = cartList.findIndex(item=>{
+      return item.id == productID
+    })
+
+    if(cartIndex!== -1 && cartList[cartIndex].value > 0){
+      const cartNewValue = cartList[cartIndex].value - 1
+      cartList[cartIndex].value = cartNewValue
+    }
+
+    setCart(cartList)
   }
 
  
