@@ -5,6 +5,7 @@ import { ShoppingCartContext } from '../../context/ShoppingCartContext'
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ScrollReveal from 'scrollreveal'
+import { ManageCart } from "../ManageCart";
 
 
 interface CoffeeItem{
@@ -17,27 +18,14 @@ interface CoffeeItem{
     // cart: number
 }
 
-interface CoffeeCardProps{
+export interface CoffeeCardProps{
     coffe: CoffeeItem
 }
 
 export function CoffeeCard ({coffe}:CoffeeCardProps){
-    const {cart, addProductToShopCart, deleteProductAtCart} = useContext(ShoppingCartContext)
-
+   
     
-
-    const [count, setCount ] = useState(() => {
-        const cartItem = cart.find(cartItem=>{
-            return cartItem.id === coffe.id
-        })
-        if(cartItem){
-            return cartItem.value
-        }else{
-            return 0
-        }
-    })
-    
-    console.log(cart)
+    // console.log(cart)
    
     const productRef = useRef<HTMLDivElement | null>(null);
     
@@ -77,33 +65,12 @@ export function CoffeeCard ({coffe}:CoffeeCardProps){
             <span className="description">{coffe.description}</span>
             
             <BuyContainer>
-                <span>
+                <span style={{marginRight: '1.44rem'}}>
                     R$
                     <span>{formatedPrice}</span>
                 </span>
 
-                <div className="buy">
-                    <button onClick={()=>{
-                        setCount(state=>{
-                            if(state > 0){
-                                return state - 1
-                            }
-                            return state
-                        })
-                        deleteProductAtCart(coffe.id)
-                    }}>
-                         <Minus weight="bold" size={14}/> 
-                    </button>
-                       {count}
-                    <button onClick={()=>{
-                        setCount(state=>{
-                            return state + 1
-                        })
-                        addProductToShopCart(coffe.id)
-                    }}>
-                        <Plus weight="bold" size={14}/>
-                    </button>
-                 </div>
+                <ManageCart coffe={coffe}/>
                 
                  <Link to='/cart' className="cart"><ShoppingCart weight="fill"/></Link>
                 {/* <div className="cart"><ShoppingCart weight="fill"/></div> */}

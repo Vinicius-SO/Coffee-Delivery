@@ -78,8 +78,17 @@ export const BuyContainer = styled.div`
 
     /* margin-bottom: 2rem; */
     
+   
+    button{
+        background: transparent ;
+
+        &:hover{
+            cursor: pointer;
+            filter: brightness(1.5);
+        }
+    }
     .buy{
-        margin:0 0.5rem 0 1.44rem ;
+            /* margin:0 0.5rem 0 1.44rem ; */
         display: flex;
         /* height: 2.375rem; */
         padding: 0.5rem;
@@ -95,16 +104,10 @@ export const BuyContainer = styled.div`
         } 
 
     }
-    button{
-        background: transparent ;
 
-        &:hover{
-            cursor: pointer;
-            filter: brightness(1.5);
-        }
-    }
     .cart{
         display: flex;
+        margin-left: 0.5rem ;
         padding: 0.5rem;
         justify-content: center;
         align-items: center;
