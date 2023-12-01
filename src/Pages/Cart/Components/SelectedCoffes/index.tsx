@@ -8,7 +8,6 @@ export const SelectedCoffes = () => {
             <h2>Cafés selecionados</h2>
             <CardContainer>
                 <SelectedCoffeCard/>
-                <SelectedCoffeCard/>
                 <TotalValues/>
             </CardContainer>
         </ListedCartCoffesContainer>

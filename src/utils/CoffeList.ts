@@ -14,7 +14,7 @@ import latte from '../assets/coffee/Type=Latte.svg'
 import árabe from '../assets/coffee/Type=Árabe.svg'
 
 // import {v4 as uuid } from 'uuid'
-interface Coffe{
+export type CoffeType ={
     id:number
     title: string
     description: string
@@ -23,7 +23,7 @@ interface Coffe{
     img: string
 }
 
-export const coffees:Coffe[] = [
+export const coffees:CoffeType[] = [
     {
         id:0,
         title: 'Expresso Tradicional',

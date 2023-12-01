@@ -5,15 +5,9 @@ interface ShoppingCartProviderProps {
   children: ReactNode;
 }
 
-type Product = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-};
 
-interface CartType {
+
+type CartType = {
   id: number
   value: number
 }
