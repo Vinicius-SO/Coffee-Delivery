@@ -30,7 +30,6 @@ export const useCart:UseCartType = ()=>{
             activeCoffes.push(activeItem!)
         })
         
-        // console.log(activeCoffes)
 
         return activeCoffes
 
@@ -47,7 +46,6 @@ export const useCart:UseCartType = ()=>{
 
         const cartSum = cart.reduce((acc,curentvalue)=>{
             const activeCoffe = coffeList.get(curentvalue.id)
-            console.log(curentvalue.value)
             return acc + (activeCoffe!.price * curentvalue.value)
         },0)
         

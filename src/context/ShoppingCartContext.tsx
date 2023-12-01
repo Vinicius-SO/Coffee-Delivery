@@ -17,6 +17,7 @@ interface ShoppingCartContextData {
   addProductToShopCart: (productID: number) => void;
   // updateCountProduct: (productID: number, count: number) => void;
   deleteProductAtCart: (productID: number) => void;
+  removeProductAtCart: (productID: number) => void;
   // clearCart: () => void;
 }
 
@@ -48,7 +49,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       cartList.push({id: productID, value:1})
     }
 
-    setCart(cartList)
+    setCart([...cartList])
 
     // console.log(cart)
   }
@@ -67,7 +68,17 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       cartList[cartIndex].value = cartNewValue
     }
 
-    setCart(cartList)
+    setCart([...cartList])
+  }
+
+  function removeProductAtCart(productId: number){
+    const cartList = cart
+
+    const cartListFiltered = cartList.filter(item=>{
+      return item.id !== productId
+    })
+
+    setCart([...cartListFiltered])
   }
 
  
@@ -77,6 +88,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         cart,
         addProductToShopCart,
         deleteProductAtCart,
+        removeProductAtCart
       }}
     >
       {children}

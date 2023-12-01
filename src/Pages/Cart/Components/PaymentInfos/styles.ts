@@ -79,4 +79,9 @@ export const PaymentCards = styled.article`
         border: 1px solid ${props=>props.theme['purple-500']};
         cursor: pointer;
     }
+    &:focus{
+        background: ${props=>props.theme['purple-200']};
+        border: 1px solid ${props=>props.theme['purple-500']};
+        cursor: pointer;
+    }
 `
