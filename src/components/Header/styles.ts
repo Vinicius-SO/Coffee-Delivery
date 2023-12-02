@@ -6,6 +6,7 @@ export const HeaderContainer = styled.header`
         width: fit-content;
         height: fit-content;
     }
+    position: relative;
     margin-top: 2rem;
     display: flex;
     flex-direction: row;
@@ -45,8 +46,35 @@ export const HeaderContainer = styled.header`
         
         border-radius: 6px;
         svg{
-            color: ${props => props.theme['yellow-500']};
+            color: ${props => props.theme['yellow-800']};
         }
     }
+
+    .floatNumber {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -8.35px;
+    top: -8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: ${({ theme }) => theme['yellow-800']};
+
+    color: ${({theme}) => theme.white};
+
+    text-align: center;
+    /* Text/Bold S */
+    font-family: Roboto;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 0.975rem */
+    letter-spacing: -0.045rem;
+
+    border-radius: 50%;
+  }
     
 `

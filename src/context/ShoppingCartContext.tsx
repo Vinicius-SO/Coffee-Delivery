@@ -51,13 +51,12 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
     setCart([...cartList])
 
-    // console.log(cart)
   }
 
 
 
   function deleteProductAtCart(productID: number) {
-    const cartList = cart
+    let cartList = cart
 
     const cartIndex = cartList.findIndex(item=>{
       return item.id == productID
@@ -66,6 +65,12 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     if(cartIndex!== -1 && cartList[cartIndex].value > 0){
       const cartNewValue = cartList[cartIndex].value - 1
       cartList[cartIndex].value = cartNewValue
+    }
+    
+    if(cartList[cartIndex].value == 0){
+      cartList= cartList.filter(item=>{
+        return item.id !== productID
+      })
     }
 
     setCart([...cartList])

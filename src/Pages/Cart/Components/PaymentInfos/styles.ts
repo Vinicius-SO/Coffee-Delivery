@@ -51,11 +51,11 @@ export const CardsContainer = styled.div`
     width: 100%;
 `
 
-export const PaymentCards = styled.article`
+export const PaymentCards = styled.button`
     display: flex;
     padding: 1rem;
     align-items: center;
-    width: 100%;
+    width: 11.16669rem;
     gap: 0.75rem;
     flex: 1 0 0;
 
@@ -74,9 +74,15 @@ export const PaymentCards = styled.article`
         color: ${props=> props.theme['gray-700']};
     }
 
-    &:hover{
+    RadioGroupItem:focus{
         background: ${props=>props.theme['purple-200']};
         border: 1px solid ${props=>props.theme['purple-500']};
+        cursor: pointer;
+    }
+
+    &:hover{
+        background: ${props=>props.theme['gray-500']};
+        /* border: 1px solid ${props=>props.theme['purple-500']}; */
         cursor: pointer;
     }
     &:focus{

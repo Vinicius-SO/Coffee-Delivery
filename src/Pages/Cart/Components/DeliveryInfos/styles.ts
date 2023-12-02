@@ -82,6 +82,9 @@ export const Input = styled.input<InputProps>`
         display: flex;
     }
 
+    &:focus{
+        outline: 1px solid ${props=> props.theme['yellow-500']};
+    }
 `
 
 

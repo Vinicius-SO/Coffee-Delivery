@@ -10,13 +10,11 @@ export function SelectedCoffeCard () {
     // const coffe = coffees[0]
     const {removeProductAtCart} = useContext(ShoppingCartContext)
     
-    const { getActiveCoffes, getCartSum } = useCart()
+    const { getActiveCoffes } = useCart()
 
     const activeCoffes = getActiveCoffes()
 
-    const cartSum = getCartSum()
 
-    console.log(activeCoffes)
     return(
         <>
         
@@ -37,7 +35,7 @@ export function SelectedCoffeCard () {
                                         </div>
                                     </div>
                                 </div>
-                                <span>R$ {coffe.price}</span>
+                                <span>R$ {Intl.NumberFormat('pt-BR', {minimumFractionDigits:2}).format(coffe.price)}</span>
                             </CartCoffeContainer>
                             <Divider/>
                         </>        
