@@ -24,8 +24,18 @@ export interface CoffeeCardProps{
 
 export function CoffeeCard ({coffe}:CoffeeCardProps){
    
-    
-    // console.log(cart)
+    const {cart, updateCountProduct} = useContext(ShoppingCartContext)
+
+    const [count, setCount ] = useState(() => {
+        const cartItem = cart.find(cartItem=>{
+            return cartItem.id === coffe.id
+        })
+        if(cartItem){
+            return cartItem.value
+        }else{
+            return 0
+        }
+    })
    
     const productRef = useRef<HTMLDivElement | null>(null);
     
@@ -69,11 +79,36 @@ export function CoffeeCard ({coffe}:CoffeeCardProps){
                     R$
                     <span>{formatedPrice}</span>
                 </span>
-
-                <ManageCart coffe={coffe}/>
-                
-                 <Link to='/cart' className="cart"><ShoppingCart weight="fill"/></Link>
-                {/* <div className="cart"><ShoppingCart weight="fill"/></div> */}
+                <div className="buy">
+            <button  onClick={()=>{
+                setCount(state=>{
+                    if(state > 0){
+                        return state - 1
+                    }
+                    return state
+                })
+                // deleteProductAtCart(coffe.id)
+            }}>
+                <Minus weight="bold" size={14}/> 
+            </button>
+            {count}
+            <button onClick={()=>{
+                setCount(state=>{
+                    return state + 1
+                })
+                // addProductToShopCart(coffe.id)
+            }}>
+                <Plus weight="bold" size={14}/>
+            </button>
+        </div>
+                 <button 
+                    className="cart"
+                    onClick={()=>{
+                        updateCountProduct(coffe.id, count)
+                    }}   
+                 >
+                    <ShoppingCart weight="fill"/>
+                </button>
             </BuyContainer>
 
         </CoffeeCardContainer>

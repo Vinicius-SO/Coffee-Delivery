@@ -15,7 +15,7 @@ type CartType = {
 interface ShoppingCartContextData {
   cart: CartType[];
   addProductToShopCart: (productID: number) => void;
-  // updateCountProduct: (productID: number, count: number) => void;
+  updateCountProduct: (productID: number, count: number) => void;
   deleteProductAtCart: (productID: number) => void;
   removeProductAtCart: (productID: number) => void;
   // clearCart: () => void;
@@ -47,6 +47,28 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       cartList[cartItem].value = cartNewValue
     }else{
       cartList.push({id: productID, value:1})
+    }
+
+    setCart([...cartList])
+
+  }
+
+  function updateCountProduct(productID: number, count:number) {
+    let cartList = cart
+
+    const cartItem = cartList.findIndex(item=>{
+      return item.id == productID
+    })
+
+    if(cartItem!== -1){
+      cartList[cartItem].value = count
+    }else{
+      cartList.push({id: productID, value:count})
+    }
+    if(cartList[cartItem].value == 0){
+      cartList= cartList.filter(item=>{
+        return item.id !== productID
+      })
     }
 
     setCart([...cartList])
@@ -93,7 +115,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         cart,
         addProductToShopCart,
         deleteProductAtCart,
-        removeProductAtCart
+        removeProductAtCart,
+        updateCountProduct
       }}
     >
       {children}
