@@ -30,6 +30,37 @@ export const TotalContainer = styled.section`
         line-height: 130%; /* 1.625rem */
     }
 
+    .toast-message {
+        position: absolute;
+        height: 5rem;
+        width: 20rem;
+        font-size: 1rem;
+        display: flex;
+        justify-content: space-between;
+
+        .Toastify__toast-icon {
+            -webkit-margin-end: 10px;
+            margin-inline-end: 10px;
+            width: 16px;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            display: -ms-flexbox;
+            display: flex;
+        }
+
+        button{
+            align-items: center;
+            justify-content: center;
+            margin-top: .5rem;
+            width: fit-content;
+            height: 1.5rem;
+            padding: 0 1.25rem;
+            
+            
+
+        }
+    }
+
     button{
         width: 100%;
         padding: 0.725rem 0.5rem;
